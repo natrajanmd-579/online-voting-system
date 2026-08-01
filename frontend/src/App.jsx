@@ -3,14 +3,15 @@ import { Routes, Route, Navigate } from "react-router-dom";
 // Authentication
 import Login from "./pages/Login";
 import Register from "./pages/Register";
-import Dashboard from "./pages/Dashboard";
+import Dashboard from "./pages/Dashboard"; // Main Dashboard Page
 import Profile from "./pages/Profile";
 import ProtectedRoute from "./components/ProtectedRoute";
 
-// Elections
+// Elections & Results
 import Elections from "./pages/Elections";
 import AddElection from "./pages/AddElection";
 import EditElection from "./pages/EditElection";
+import ElectionResults from "./components/ElectionResults"; // Added Results module
 
 // Candidates
 import Candidates from "./pages/Candidates";
@@ -73,6 +74,16 @@ function App() {
         element={
           <ProtectedRoute>
             <EditElection />
+          </ProtectedRoute>
+        }
+      />
+
+      {/* Results Route */}
+      <Route
+        path="/results"
+        element={
+          <ProtectedRoute>
+            <ElectionResults />
           </ProtectedRoute>
         }
       />

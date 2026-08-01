@@ -9,6 +9,13 @@ const db = require("./config/db");
 const authRoutes = require("./routes/authRoutes");
 const electionRoutes = require("./routes/electionRoutes");
 const candidateRoutes = require("./routes/candidateRoutes");
+const dashboardRoutes = require("./routes/dashboardRoutes");
+
+// 👇 Add these lines here
+console.log("authRoutes:", typeof authRoutes, authRoutes);
+console.log("electionRoutes:", typeof electionRoutes, electionRoutes);
+console.log("candidateRoutes:", typeof candidateRoutes, candidateRoutes);
+console.log("dashboardRoutes:", typeof dashboardRoutes, dashboardRoutes);
 
 const app = express();
 
@@ -23,8 +30,7 @@ app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 app.use("/api/auth", authRoutes);
 app.use("/api/elections", electionRoutes);
 app.use("/api/candidates", candidateRoutes);
-
-// Home Route
+app.use("/api/dashboard", dashboardRoutes);
 app.get("/", (req, res) => {
     res.json({
         success: true,
