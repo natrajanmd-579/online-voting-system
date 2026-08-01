@@ -60,7 +60,7 @@ exports.createElection = async (req, res) => {
             description,
             start_date,
             end_date,
-            status: status || "Upcoming",
+            status: status || "upcoming",
         });
 
         res.status(201).json({
