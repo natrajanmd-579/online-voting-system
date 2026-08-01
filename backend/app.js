@@ -10,6 +10,7 @@ const authRoutes = require("./routes/authRoutes");
 const electionRoutes = require("./routes/electionRoutes");
 const candidateRoutes = require("./routes/candidateRoutes");
 const voteRoutes = require("./routes/voteRoutes");
+const dashboardRoutes = require("./routes/dashboardRoutes");
 
 const app = express();
 
@@ -25,6 +26,7 @@ app.use("/api/auth", authRoutes);
 app.use("/api/elections", electionRoutes);
 app.use("/api/candidates", candidateRoutes);
 app.use("/api/votes", voteRoutes);
+app.use("/api/dashboard", dashboardRoutes);
 
 // Home Route
 app.get("/", (req, res) => {
