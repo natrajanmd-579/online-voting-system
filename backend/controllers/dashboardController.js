@@ -4,7 +4,7 @@ const db = require('../config/db'); // MySQL connection pool
  * @desc Get overall system statistics for dashboard cards
  * @route GET /api/dashboard/summary
  */
-exports.getDashboardSummary = async (req, res) => {
+const getDashboardSummary = async (req, res) => {
     try {
         const query = `
             SELECT 
@@ -34,10 +34,35 @@ exports.getDashboardSummary = async (req, res) => {
 };
 
 /**
+ * @desc Get list of all elections (for dropdown selection in results page)
+ * @route GET /api/dashboard/elections
+ */
+const getElectionsList = async (req, res) => {
+    try {
+        const [elections] = await db.query(
+            "SELECT id, title, status FROM elections ORDER BY id DESC"
+        );
+
+        return res.status(200).json({
+            success: true,
+            message: "Elections list retrieved successfully",
+            data: elections
+        });
+    } catch (error) {
+        console.error("Error fetching elections list:", error);
+        return res.status(500).json({
+            success: false,
+            message: "Internal server error while fetching elections list",
+            data: []
+        });
+    }
+};
+
+/**
  * @desc Get election results, vote breakdown, and winner detection
  * @route GET /api/dashboard/results/:electionId
  */
-exports.getElectionResults = async (req, res) => {
+const getElectionResults = async (req, res) => {
     const { electionId } = req.params;
 
     try {
@@ -95,4 +120,10 @@ exports.getElectionResults = async (req, res) => {
             data: null
         });
     }
+};
+
+module.exports = {
+    getDashboardSummary,
+    getElectionsList,
+    getElectionResults
 };
