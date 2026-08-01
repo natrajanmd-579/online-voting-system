@@ -63,7 +63,7 @@ const deleteElection = async (id) => {
 // Activate election
 const activateElection = async (id) => {
     const [result] = await db.query(
-        "UPDATE elections SET status = 'Active' WHERE id = ?",
+        "UPDATE elections SET status = 'active' WHERE id = ?",
         [id]
     );
 
@@ -73,7 +73,7 @@ const activateElection = async (id) => {
 // End election
 const endElection = async (id) => {
     const [result] = await db.query(
-        "UPDATE elections SET status = 'Completed' WHERE id = ?",
+        "UPDATE elections SET status = 'completed' WHERE id = ?",
         [id]
     );
 
