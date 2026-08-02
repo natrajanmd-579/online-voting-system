@@ -21,8 +21,11 @@ function Login() {
     });
   };
 
+  const [submitting, setSubmitting] = useState(false);
+
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setSubmitting(true);
 
     try {
       const response = await loginUser(form);
@@ -36,6 +39,8 @@ function Login() {
       toast.error(
         error.response?.data?.message || "Login Failed"
       );
+    } finally {
+      setSubmitting(false);
     }
   };
 
@@ -67,8 +72,8 @@ function Login() {
             required
           />
 
-          <button type="submit">
-            Login
+          <button type="submit" disabled={submitting}>
+            {submitting ? "Logging in..." : "Login"}
           </button>
 
         </form>

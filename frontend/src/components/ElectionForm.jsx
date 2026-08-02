@@ -6,7 +6,7 @@ function ElectionForm({ initialData = {}, onSubmit }) {
     description: "",
     start_date: "",
     end_date: "",
-    status: "Inactive",
+    status: "upcoming",
   });
 
   useEffect(() => {
@@ -14,9 +14,9 @@ function ElectionForm({ initialData = {}, onSubmit }) {
       setForm({
         title: initialData.title || "",
         description: initialData.description || "",
-        start_date: initialData.start_date || "",
-        end_date: initialData.end_date || "",
-        status: initialData.status || "Inactive",
+        start_date: (initialData.start_date || "").slice(0, 10),
+        end_date: (initialData.end_date || "").slice(0, 10),
+        status: initialData.status || "upcoming",
       });
     }
   }, [initialData]);
@@ -83,9 +83,9 @@ function ElectionForm({ initialData = {}, onSubmit }) {
         value={form.status}
         onChange={handleChange}
       >
-        <option>Inactive</option>
-        <option>Active</option>
-        <option>Ended</option>
+        <option value="upcoming">Upcoming</option>
+        <option value="active">Active</option>
+        <option value="completed">Completed</option>
       </select>
 
       <button type="submit">

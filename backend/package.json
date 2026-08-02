@@ -1,14 +1,18 @@
 {
-  "name": "backend",
-  "version": "1.0.0",
-  "description": "",
-  "main": "app.js",
+  "name": "online-voting-system-backend",
+  "version": "2.0.0",
+  "description": "Online Voting System REST API",
+  "main": "src/server.js",
   "scripts": {
-    "start": "node app.js",
-    "dev": "nodemon app.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node src/server.js",
+    "dev": "nodemon src/server.js",
+    "seed:admin": "node database/seedAdmin.js",
+    "test": "echo \"no tests specified\" && exit 0"
   },
-  "keywords": [],
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "keywords": ["voting", "election", "express", "mysql"],
   "author": "",
   "license": "ISC",
   "dependencies": {
@@ -16,7 +20,9 @@
     "cors": "^2.8.6",
     "dotenv": "^17.4.2",
     "express": "^5.2.1",
+    "express-rate-limit": "^7.4.1",
     "express-validator": "^7.3.2",
+    "helmet": "^8.0.0",
     "jsonwebtoken": "^9.0.3",
     "multer": "^2.2.0",
     "mysql2": "^3.23.2"

@@ -29,15 +29,19 @@ function Register() {
 
     };
 
+    const [submitting, setSubmitting] = useState(false);
+
     const handleSubmit = async (e) => {
 
         e.preventDefault();
+
+        setSubmitting(true);
 
         try {
 
             const response = await registerUser(form);
 
-            toast.success(response.data.message);
+            toast.success(response.message || "Registration successful");
 
             navigate("/");
 
@@ -49,6 +53,8 @@ function Register() {
                 err.response?.data?.message || "Registration Failed"
             );
 
+        } finally {
+            setSubmitting(false);
         }
 
     };
@@ -98,12 +104,13 @@ function Register() {
                         placeholder="Password"
                         value={form.password}
                         onChange={handleChange}
+                        minLength={6}
                         required
                     />
 
-                    <button type="submit">
+                    <button type="submit" disabled={submitting}>
 
-                        Register
+                        {submitting ? "Registering..." : "Register"}
 
                     </button>
 
