@@ -112,7 +112,7 @@ online-voting-system/
 
 # 👨‍💻 Team Responsibilities
 
-### Member 1 – Authentication & User Management
+### Member 1 (Natrajan MD)– Authentication & User Management
 - Registration
 - Login
 - JWT Authentication
@@ -121,18 +121,18 @@ online-voting-system/
 - Role Management
 - Protected Routes
 
-### Member 2 – Election & Candidate Management
+### Member 2 (Dhayanidhi)– Election & Candidate Management
 - Election CRUD
 - Candidate CRUD
 - Election Status
 
-### Member 3 – Voting Module
+### Member 3 (Revaan JR)– Voting Module
 - Candidate List
 - Vote Casting
 - One Person One Vote Validation
 - Duplicate Vote Prevention
 
-### Member 4 – Dashboard & Results
+### Member 4 (Shyaam Sundar)– Dashboard & Results
 - Dashboard
 - Live Results
 - Statistics
